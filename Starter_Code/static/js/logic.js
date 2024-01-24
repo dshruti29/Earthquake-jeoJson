@@ -43,19 +43,21 @@ function styleInfo(feature) {
 
 
   function getColor(depth) {
-    if (depth > 200) {
-      return "#ea2c2c";
+    if (depth > 90) {
+      return "#636363";
     }
-    if (depth > 100) {
-      return "#ea822c";
+    if (depth > 70) {
+      return "#800026";
     }
-    if (depth > 50) {
-      return "#ee9c00";
+    if (depth > 40) {
+      return "#756bb1";
     }
     if (depth > 20) {
       return "#eecc00";
     }
-   
+   if (depth > 5){
+      return "#FD8D3C";
+   }
     return "#98ee00";
   }
 function getRadius(magnitude){
@@ -93,14 +95,14 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
     // Then add all the details for the legend.
     legend.onAdd = function () {
         var div = L.DomUtil.create('div', 'info legend');
-        const depth = [5, 20, 50, 100, 150, 200];
+        const depth = [-10, 5, 20, 40, 70, 90];
         const colors = [
             "#98ee00",
-            "#d4ee00",
+            "#FD8D3C",
             "#eecc00",
-            "#ee9c00",
-            "#ea822c",
-            "#ea2c2c"
+            "#756bb1",
+            "#800026",
+            "#636363"
         ];
         for (var i = 0; i < depth.length; i++) {
             console.log(colors[i]);
